@@ -1,0 +1,16 @@
+{
+    "name": "brackets-ninja",
+    "title": "Brackets Ninja",
+    "description": "Brackets connector to ninja tools",
+    "homepage": "https://github.com/mohanaravind/ninjatools",
+    "version": "0.0.1",
+    "author": "Aravind Mohan (https://github.com/mohanaravind)",
+    "license": "MIT",
+
+    "keywords": [
+		    "ninjatools"
+    ],
+    "engines": {
+        "brackets": ">=0.38.0"
+    }
+}

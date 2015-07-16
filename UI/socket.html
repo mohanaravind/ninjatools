@@ -1,0 +1,18 @@
+<script src="socket.js"></script>
+
+<script>
+
+	alert('hi');
+	
+	window.ss = 'dsf';
+	
+	console.log(window.io);
+	
+			var socket = io('http://localhost:1415');
+		 socket.on('news', function (data) {
+		 	console.log(data);
+		 	alert(data);
+		 	socket.emit('my other event', { my: 'datasss' });
+		 });
+
+</script>

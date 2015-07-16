@@ -1,0 +1,13 @@
+.ninja_icon {
+	background-image: url('../assets/ninja_icon.png');
+	transition: all 0.5s;
+}
+
+.ninja_icon.is-disconnected {
+	opacity: 0.2;
+  /* Do a grey filtering */
+}
+
+.is-hidden {
+  display: none;
+}

@@ -1,0 +1,47 @@
+<!--
+@license
+Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/paper-material/paper-material.html">
+
+<dom-module id="ninja-dev-tools">
+  <style>
+    :host {
+      display: block;
+    }
+  </style>
+  <template>
+    <paper-material elevation="1">
+      <h2>Contact</h2>
+      <p>This is the contact section</p>
+      <button on-click="_execute">Execute</button>
+    </paper-material>
+  </template>
+</dom-module>
+<script>
+(function() {
+  Polymer({
+    is: 'ninja-dev-tools',
+    _execute: function () {
+      console.log('Hello');
+      
+      // In renderer process (web page).
+      var ipc = require('ipc');
+      console.log(ipc.sendSync('synchronous-message', 'ping')); // prints "pong"
+
+      ipc.on('asynchronous-reply', function(arg) {
+        console.log(arg); // prints "pong"
+      });
+      ipc.send('asynchronous-message', 'ping');
+
+    }
+  });
+})();
+</script>
