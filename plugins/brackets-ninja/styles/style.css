@@ -11,3 +11,68 @@
 .is-hidden {
   display: none;
 }
+
+.container {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(8, 8, 8, 0.32);
+	padding: 100px;
+	z-index: 9999;
+}
+
+.Aligner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+	z-index: 99999;
+}
+
+.Aligner-item {
+	z-index: 999999;
+	width: 600px;
+	border: thin solid rgb(195, 198, 197);
+	border-radius: 5px;
+}
+
+.nj-modal-header {
+	background: #d4d7d7;
+	border-radius: 4px 4px 0 0;
+	border-bottom: 1px solid #c3c6c5;
+	box-shadow: inset 0 1px 0 rgba(255,255,255,0.12);
+	padding: 10px;
+}
+
+.nj-modal-body {
+	position: relative;
+	overflow-y: auto;
+	max-height: 400px;
+	padding: 15px;
+	background-color: #dfe2e2;
+	text-align: center;
+	width: auto;
+}
+
+.nj-field-container {
+	display: inline-block;
+}
+
+.nj-url {
+	margin: 0 0 0 5px;
+	width: 400px;
+}
+
+.nj-modal-footer {
+	background-color: #dfe2e2;
+	border-top: 1px solid #c3c6c5;
+	box-shadow: none;
+	padding: 10px 15px 12px;
+	white-space: nowrap;
+}
+
+.nj-settings-default{
+	text-align: right;
+	cursor: pointer;
+}

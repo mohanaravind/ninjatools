@@ -53,7 +53,7 @@ var io = require('socket.io')(1415);
 
 io.on('connection', function (socket) {
 	console.log('Connected');
-	
+
 	// In main process.
 	var ipc = require('ipc');
 //	ipc.on('asynchronous-message', function(event, arg) {
@@ -65,15 +65,15 @@ io.on('connection', function (socket) {
 //		console.log(arg);  // prints "ping"
 //		event.returnValue = 'pong';
 		console.log('Sending message to client!');
-		socket.emit('news', { hello: 'world' });
+		socket.emit('discover', { hello: 'world' });
 	});
 
-	
-	
-	
+
+
+
 //	console.log('on connection');
-//  socket.emit('news', { hello: 'world' });
-//  socket.on('my other event', function (data) {
-//    console.log(data);
-//  });
+ 	// 	socket.emit('news', { hello: 'world' });
+	 socket.on('from', function (data) {
+	   console.log(data);
+	 });
 });
