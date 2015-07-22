@@ -9,15 +9,16 @@ window.define(function (require, exports, module) {
 	function connectToNinjaTools(IDE) {
 		var io = require('lib/io'),
 			IBrackets = require('src/IBrackets'),
+			INinjaTools = require('src/INinjaTools'),
 			socket;
 
 		console.info('starting connection');
 
 		//Make the connection
 		socket = io(IDE.preference.connection_url);
-		
-		//Pass the socket to interface
-		IBrackets.handle(socket);
+
+		//Pass on the socket and the brackets interface
+		INinjaTools.handle(socket, IBrackets);
 	}
 
 	//Initializes the extension

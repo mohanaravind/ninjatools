@@ -56,16 +56,21 @@ io.on('connection', function (socket) {
 
 	// In main process.
 	var ipc = require('ipc');
-//	ipc.on('asynchronous-message', function(event, arg) {
-//		console.log(arg);  // prints "ping"
-//		event.sender.send('asynchronous-reply', 'pong');
-//	});
+	// ipc.on('asynchronous-message', function(event, arg) {
+	// 	console.log(arg);  // prints "ping"
+	// 	socket.emit('invoke', arg);
+	//
+	// 	socket.on('reply', function (data) {
+	// 		console.log(data);
+	// 		event.sender.send('asynchronous-reply', data);
+	// 	});
+	// });
 
 	ipc.on('synchronous-message', function(event, arg) {
 //		console.log(arg);  // prints "ping"
 //		event.returnValue = 'pong';
-		console.log('Sending message to client!');
-		socket.emit('discover', { hello: 'world' });
+		console.log('Sending message to client2!');
+		socket.emit('invoke', { name: 'getActivePath' });
 	});
 
 
@@ -73,7 +78,7 @@ io.on('connection', function (socket) {
 
 //	console.log('on connection');
  	// 	socket.emit('news', { hello: 'world' });
-	 socket.on('from', function (data) {
+	 socket.on('reply', function (data) {
 	   console.log(data);
 	 });
 });

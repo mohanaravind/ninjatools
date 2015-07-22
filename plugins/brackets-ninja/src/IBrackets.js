@@ -1,20 +1,31 @@
-//Interface for brackets with the ninja tools
+//Interface for brackets
 window.define(function (require, exports, module) {
 	'use strict';
 
 	var IBrackets = {};
 
-  IBrackets.handle = function (socket) {
-    this.socket = socket;
-		console.log(this.socket);
+	//Returns the path of the currently active document
+	IBrackets.getActivePath  = function () {
+		return new Promise(function(resolve, reject) {
+			var DocumentManager = brackets.getModule('document/DocumentManager'),
+				path;
 
-		socket.on('discover', function (data) {
-			console.log(data);
-
-			socket.emit('from', {name: 'ara'});
+			path = DocumentManager.getCurrentDocument().file.fullPath;
+			resolve(path);
 		});
+	};
 
-  };
+	//Returns the project root path
+	IBrackets.getRootPath  = function () {
+		return new Promise(function(resolve, reject) {
+			var ProjectManager = brackets.getModule('project/ProjectManager'),
+				path;
+
+			path = ProjectManager.getProjectRoot().fullPath;
+
+			resolve(path);
+		});
+	};
 
 
 	return IBrackets;
