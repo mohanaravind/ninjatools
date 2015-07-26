@@ -27,6 +27,17 @@ window.define(function (require, exports, module) {
 		});
 	};
 
+	IBrackets.getSelectedItem = function () {
+		return new Promise(function(resolve, reject) {
+			var ProjectManager = brackets.getModule('project/ProjectManager'),
+				path;
+
+			path = ProjectManager.getSelectedItem().fullPath;
+
+			resolve(path);
+		});
+	};
+
 
 	return IBrackets;
 });

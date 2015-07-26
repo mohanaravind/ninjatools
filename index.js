@@ -56,6 +56,19 @@ io.on('connection', function (socket) {
 
 	// In main process.
 	var ipc = require('ipc');
+
+	//Listen for invoke calls
+	ipc.on('invoke', function (event, data) {
+		socket.emit('invoke', data);
+
+		//Listen for reply from clients
+		socket.on('reply', function (data) {
+			event.sender.send('reply', data);
+		});
+	});
+
+
+
 	// ipc.on('asynchronous-message', function(event, arg) {
 	// 	console.log(arg);  // prints "ping"
 	// 	socket.emit('invoke', arg);
@@ -66,19 +79,19 @@ io.on('connection', function (socket) {
 	// 	});
 	// });
 
-	ipc.on('synchronous-message', function(event, arg) {
-//		console.log(arg);  // prints "ping"
-//		event.returnValue = 'pong';
-		console.log('Sending message to client2!');
-		socket.emit('invoke', { name: 'getActivePath' });
-	});
-
-
-
-
-//	console.log('on connection');
- 	// 	socket.emit('news', { hello: 'world' });
-	 socket.on('reply', function (data) {
-	   console.log(data);
-	 });
+// 	ipc.on('synchronous-message', function(event, arg) {
+// //		console.log(arg);  // prints "ping"
+// //		event.returnValue = 'pong';
+// 		console.log('Sending message to client2!');
+// 		socket.emit('invoke', { name: 'getActivePath' });
+// 	});
+//
+//
+//
+//
+// //	console.log('on connection');
+//  	// 	socket.emit('news', { hello: 'world' });
+// 	 socket.on('reply', function (data) {
+// 	   console.log(data);
+// 	 });
 });

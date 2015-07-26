@@ -18,6 +18,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     }
   </style>
   <template>
+    <input id="method" value="getActivePath"/>
     <paper-material elevation="1">
       <h2>Contact</h2>
       <p>This is the contact section</p>
@@ -29,18 +30,28 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 (function() {
   Polymer({
     is: 'ninja-dev-tools',
+    ready: function () {
+      this.ipc = require('ipc');
+
+      //Set the listener
+      this.ipc.on('reply', this._onReply);
+    },
+    _onReply: function (data) {
+      console.log(data);
+    },
     _execute: function () {
-      console.log('Hello');
-      
-      // In renderer process (web page).
-      var ipc = require('ipc');
-      console.log(ipc.sendSync('synchronous-message', 'ping')); // prints "pong"
+      // console.log('Hello');
+      //
+      // // In renderer process (web page).
+      //
+      // console.log(ipc.sendSync('synchronous-message', 'ping')); // prints "pong"
+      //
+      // ipc.on('asynchronous-reply', function(arg) {
+      //   console.log(arg); // prints "pong"
+      // });
+      // ipc.send('asynchronous-message', 'ping');
 
-      ipc.on('asynchronous-reply', function(arg) {
-        console.log(arg); // prints "pong"
-      });
-      ipc.send('asynchronous-message', 'ping');
-
+      this.ipc.send('invoke', {name: this.$.method.value});
     }
   });
 })();
