@@ -66,32 +66,9 @@ io.on('connection', function (socket) {
 			event.sender.send('reply', data);
 		});
 	});
-
-
-
-	// ipc.on('asynchronous-message', function(event, arg) {
-	// 	console.log(arg);  // prints "ping"
-	// 	socket.emit('invoke', arg);
-	//
-	// 	socket.on('reply', function (data) {
-	// 		console.log(data);
-	// 		event.sender.send('asynchronous-reply', data);
-	// 	});
-	// });
-
-// 	ipc.on('synchronous-message', function(event, arg) {
-// //		console.log(arg);  // prints "ping"
-// //		event.returnValue = 'pong';
-// 		console.log('Sending message to client2!');
-// 		socket.emit('invoke', { name: 'getActivePath' });
-// 	});
-//
-//
-//
-//
-// //	console.log('on connection');
-//  	// 	socket.emit('news', { hello: 'world' });
-// 	 socket.on('reply', function (data) {
-// 	   console.log(data);
-// 	 });
 });
+
+var NinjaDevTools = require('ninja-dev-tools');
+
+var ninjaDevTools = new NinjaDevTools();
+ninjaDevTools.test();
